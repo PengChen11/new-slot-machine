@@ -20,4 +20,3 @@ We are building a slot machine, a basic game of chance that can amuse people for
 
 
 
-
