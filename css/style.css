@@ -6,6 +6,7 @@ body{
     border: solid black thin;
     width: 1500px;
     margin: 50px auto;
+    background-color: rgb(162, 207, 223);
 }
 
 /* header */
@@ -35,12 +36,13 @@ body{
     margin-left: 100px;
     margin-top: 20px;
     height: 75px;
+    width: 500px;
 }
 
 #status-creditBox-text{
     display: inline-block;
-    width: 200px;
-    height: 75px;
+    width: 250px;
+    height: 25px;
 }
 
 /* credit: */
@@ -49,9 +51,7 @@ body{
     color: black;
     font-family: 'Press Start 2P', cursive;
     text-align: left;
-    font-size: 30px;
-    width: 350px;
-    height: 75px;
+    font-size: 35px;
 }
 
 /* $100 */
@@ -59,8 +59,8 @@ body{
     border: solid black thin;
     display: inline-block;
     font-family: 'Press Start 2P', cursive;
-    font-size: 30px;
-    width: 200px;
+    font-size: 35px;
+    width: 20px;
     margin-left: 10px;
 
 }
@@ -70,8 +70,9 @@ body{
     border: solid black thin;
     display: inline-block;
     vertical-align: top;
+    background-color: rgb(250, 217, 73);
     width: 250px;
-    height: 900px;
+    height: 800px;
     margin-top: 20px;
 }
 
@@ -80,7 +81,7 @@ body{
     font-family: 'Press Start 2P', cursive;
     font-size: xx-large;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 /* 1 5 10 buttons */
@@ -92,10 +93,10 @@ button{
     border-style: outset;
     border-width: 7px;
     border-color: rgb(90, 165, 63);
-    width: 200px;
-    height: 50px;
-    margin-left: 25px;
-    margin-top: 28px;
+    width: 220px;
+    height: 75px;
+    margin-left: 15px;
+    margin-top: 75px;
 }
 
 button:hover{
@@ -111,7 +112,7 @@ button:hover{
     display: inline-block;
     font-family: 'Press Start 2P', cursive;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 100px;
     margin-left: 15px;
     height: 150px;
     padding-top: 50x;
@@ -119,7 +120,7 @@ button:hover{
 
 /* right box w images and text */
 #slot {
-    background-image: url("../assets/jackpot.png");
+    background-image: url("../assets/newjackpot.png");
     background-size: 1000px;
     background-repeat: no-repeat;
     display: inline-block;
@@ -163,8 +164,9 @@ button:hover{
     border: solid black thin;
     color: black;
     font-family: 'Press Start 2P', cursive;
-    font-size: xx-large;
+    font-size: 50px;
     text-align: center;
-    margin-top: 500px;
-    width: 500px
+    margin-top: 200px;
+    width: 900px;
+    padding-left: 0px;
 }
