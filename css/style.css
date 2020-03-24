@@ -4,74 +4,80 @@
 
 body{
     border: solid black thin;
-    width: 1100px;
+    width: 1500px;
+    height: 800px;
+    margin: 100px auto;
 }
 
 /* header */
 #status{
     border: solid black thin;
     display: inline-block;
-    width:1100px;
+    width:1500px;
 }
 
 /* get 3 of a kind to win a jackpot! */
 #status-winningRound{
     border: solid black thin;
     display: inline-block;
-    height: 40px;
-    width: 400px;
     vertical-align: top;
+    font-family: 'Press Start 2P', cursive;
+    height: 40px;
+    width: 500px;
     margin-top: 20px;
 }
 
+/*  */
 #status-creditBox{
     border: solid black thin;
     display: inline-block;
-    width: 250px;
-    margin-left: 395px;
+    width: 600px;
+    margin-left: 100px;
     margin-top: 20px;
-    height: 40px;
+    height: 75px;
+}
+
+#status-creditBox-text{
+    display: inline-block;
+    width: 350px;
+    height: 75px;
 }
 
 /* credit: */
-#status-creditBox-text{
-    width: 100px;
-    display: inline-block;
-    height: 30px;
-}
-
 #status-creditBox-text h2{
     border: solid black thin;
     color: black;
-    font-family: monospace;
-    font-size: xx-large;
+    font-family: 'Press Start 2P', cursive;
     text-align: left;
-    width: 250px;
-    height: 40px;
+    font-size: 50px;
+    width: 350px;
+    height: 75px;
 }
 
 /* $100 */
 #status-dollar{
     border: solid black thin;
     display: inline-block;
-    font-family: monospace;
-    font-size: xx-large;
-    width: 100px;
-    margin-left: 20px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 50px;
+    width: 200px;
+    margin-left: 10px;
+
 }
 
 /* left wager box w instructions */
 #wagers{
     border: solid black thin;
     display: inline-block;
-    width: 170px;
-    height: 500px;
     vertical-align: top;
+    width: 300px;
+    height: 500px;
+    margin-top: 20px;
 }
 
 #wagers h2{
     color: black;
-    font-family: monospace;
+    font-family: 'Press Start 2P', cursive;
     font-size: xx-large;
     text-align: center;
     margin-top: 20px;
@@ -79,55 +85,78 @@ body{
 
 /* 1 5 10 buttons */
 button{
-    border: solid black thin;
+    background-color: rgb(112, 228, 69);
     display: inline-block;
-    width: 100px;
-    margin-left: 30px;
-    margin-top: 20px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: xx-large;
+    border-style: outset;
+    border-width: 7px;
+    border-color: rgb(90, 165, 63);
+    width: 200px;
+    height: 50px;
+    margin-left: 50px;
+    margin-top: 28px;
+}
+
+button:hover{
+    background-color: rgb(230, 49, 35);
+    border-style: inset;
+    border-width: 7px;
+    border-color: rgb(174, 56, 26);
 }
 
 /* instructions */
 #multipliers{
     border: solid black thin;
     display: inline-block;
-    margin-top: 192px;
-    margin-left: 8px;
-    height: 100px;
-    padding-top: 20px;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    margin-top: 30px;
+    margin-left: 15px;
+    height: 150px;
+    padding-top: 50x;
 }
 
 /* right box w images and text */
 #slot {
+    background-image: url("https://via.placeholder.com/611x504/DDDDDD");
     border: solid black thin;
     display: inline-block;
-    width: 920px;
+    width: 611px;
+    height: 504px;
+    margin-left: 300px;
+    margin-top: 20px;
 }
 #slot-images{
     border: solid black thin;
     display: inline-block;
-    width: 920px;
+    width: 611px;
 }
 
-#images{
+.images{
     border: solid black thin;
     display: inline-block;
     width: 200px;
-    margin-top: 50px;
-    margin-left: 50px;
+    margin-top: 10px;
+    margin-left: 10px;
     padding-left: 30px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
+    height: 200px;
+    width: 150px;
 }
 
-#img1 #img2 #img3{
+.images img{
     border: solid black thin;
     display: inline-block;
-    height: 200;
-    width: 150;
+    height: 200px;
+    width: 150px;
 }
 
-#slot-victory{
+/* footer  */
+#victory{
+    border: solid black thin;
     color: black;
-    font-family: monospace;
+    font-family: 'Press Start 2P', cursive;
     font-size: xx-large;
     text-align: center;
     margin-top: 20px;
