@@ -5,8 +5,7 @@
 body{
     border: solid black thin;
     width: 1500px;
-    height: 800px;
-    margin: 100px auto;
+    margin: 50px auto;
 }
 
 /* header */
@@ -21,17 +20,18 @@ body{
     border: solid black thin;
     display: inline-block;
     vertical-align: top;
+    text-align: center;
     font-family: 'Press Start 2P', cursive;
+    font-size: 20px;
     height: 40px;
-    width: 500px;
-    margin-top: 20px;
+    width: 700px;
+    margin-top: 30px;
 }
 
 /*  */
 #status-creditBox{
     border: solid black thin;
     display: inline-block;
-    width: 600px;
     margin-left: 100px;
     margin-top: 20px;
     height: 75px;
@@ -39,7 +39,7 @@ body{
 
 #status-creditBox-text{
     display: inline-block;
-    width: 350px;
+    width: 200px;
     height: 75px;
 }
 
@@ -49,7 +49,7 @@ body{
     color: black;
     font-family: 'Press Start 2P', cursive;
     text-align: left;
-    font-size: 50px;
+    font-size: 30px;
     width: 350px;
     height: 75px;
 }
@@ -59,7 +59,7 @@ body{
     border: solid black thin;
     display: inline-block;
     font-family: 'Press Start 2P', cursive;
-    font-size: 50px;
+    font-size: 30px;
     width: 200px;
     margin-left: 10px;
 
@@ -70,8 +70,8 @@ body{
     border: solid black thin;
     display: inline-block;
     vertical-align: top;
-    width: 300px;
-    height: 500px;
+    width: 250px;
+    height: 900px;
     margin-top: 20px;
 }
 
@@ -94,7 +94,7 @@ button{
     border-color: rgb(90, 165, 63);
     width: 200px;
     height: 50px;
-    margin-left: 50px;
+    margin-left: 25px;
     margin-top: 28px;
 }
 
@@ -119,37 +119,43 @@ button:hover{
 
 /* right box w images and text */
 #slot {
-    background-image: url("https://via.placeholder.com/611x504/DDDDDD");
-    border: solid black thin;
+    background-image: url("../assets/jackpot.png");
+    background-size: 1000px;
+    background-repeat: no-repeat;
     display: inline-block;
-    width: 611px;
-    height: 504px;
-    margin-left: 300px;
-    margin-top: 20px;
+    width: 1200px;
+    margin-left: 40px;
+    margin-top: 15px;
 }
 #slot-images{
-    border: solid black thin;
+    /* border: solid black thin; */
     display: inline-block;
     width: 611px;
 }
 
 .images{
-    border: solid black thin;
+    /* border: solid black thin; */
     display: inline-block;
-    width: 200px;
-    margin-top: 10px;
-    margin-left: 10px;
-    padding-left: 30px;
-    margin-bottom: 10px;
     height: 200px;
     width: 150px;
+    margin-top: 450px;
 }
 
 .images img{
-    border: solid black thin;
+    /* border: solid black thin; */
     display: inline-block;
-    height: 200px;
-    width: 150px;
+    height: 240px;
+    width: 210px;
+}
+
+#img1{
+    margin-left: 74px;
+}
+#img2{
+    margin-left: 190px;
+}
+#img3{
+    margin-left: 307px;
 }
 
 /* footer  */
@@ -159,5 +165,6 @@ button:hover{
     font-family: 'Press Start 2P', cursive;
     font-size: xx-large;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 500px;
+    width: 500px
 }
