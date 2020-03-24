@@ -1,0 +1,125 @@
+* {
+    border: solid black thin;
+}
+
+body{
+    border: solid black thin;
+    width: 1100px;
+}
+
+#status-creditBox-text{
+    width: 100px;
+    display: inline-block;
+    height: 30px;
+}
+
+#status-creditBox{
+    border: solid black thin;
+    display: inline-block;
+    width: 250px;
+    /* margin: 10px; */
+    margin-left: 395px;
+    margin-top: 20px;
+    height: 40px;
+}
+
+#status-creditBox-text h2{
+    border: solid black thin;
+    color: black;
+    font-family: monospace;
+    font-size: xx-large;
+    text-align: left;
+    width: 250px;
+    height: 40px;
+}
+#status-dollar{
+    border: solid black thin;
+    display: inline-block;
+    font-family: monospace;
+    font-size: xx-large;
+    width: 100px;
+    margin-left: 20px;
+}
+.wagers h2{
+    color: black;
+    font-family: monospace;
+    font-size: xx-large;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.status{
+    border: solid black thin;
+    display: inline-block;
+    width:1100px;
+}
+
+#status-winningRound{
+    border: solid black thin;
+    display: inline-block;
+    height: 40px;
+    width: 400px;
+    /* margin: 10px; */
+    vertical-align: top;
+    margin-top: 20px;
+}
+
+.wagers{
+    border: solid black thin;
+    display: inline-block;
+    width: 170px;
+    height: 500px;
+    vertical-align: top;
+}
+.multipliers{
+    border: solid black thin;
+    display: inline-block;
+    margin-top: 192px;
+    margin-left: 8px;
+    height: 100px;
+    padding-top: 20px;
+}
+
+.slot {
+    border: solid black thin;
+    display: inline-block;
+    width: 920px;
+}
+.slot-images{
+    border: solid black thin;
+    display: inline-block;
+    width: 920px;
+}
+
+.images{
+    border: solid black thin;
+    display: inline-block;
+    width: 200px;
+    margin-top: 50px;
+    margin-left: 50px;
+    padding-left: 30px;
+    margin-bottom: 50px;
+}
+
+#img1 #img2 #img3{
+    border: solid black thin;
+    display: inline-block;
+    height: 200;
+    width: 150;
+}
+
+button{
+    border: solid black thin;
+    display: inline-block;
+    width: 100px;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+#slot-victory{
+    color: black;
+    font-family: monospace;
+    font-size: xx-large;
+    text-align: center;
+    margin-top: 20px;
+}
