@@ -33,15 +33,15 @@
 4. As a user I would like update the user upon a successful spin, letting them know what amount they won that spin.
     - Create a function to show the winnings for that spin to write to the HTML. 
 
-4. As a user i would like to have a low skill game for participants that requires no skill to win, and will attract players to spend a lot of time playing our game.
+5. As a user i would like to have a low skill game for participants that requires no skill to win, and will attract players to spend a lot of time playing our game.
     - Display clear instructions on how to play and win.
     - Create a visually pleasing website, that is easy on the eyes and gets people excited to win money. 
 
-5. As a user I want to let the player know when the game is over.
+6. As a user I want to let the player know when the game is over.
     - Have an alert when the players Total reached $1000 or more saying “Congratulations you are a Big Winner”
     - Have an alert when the players total reaches $0 saying “Sorry you are broke!”
 
-6. As a user I want to be able to control the win/ loss ratio, so if busy we can make winning more difficult and if not busy easy to win to attract more users.
+7. As a user I want to be able to control the win/ loss ratio, so if busy we can make winning more difficult and if not busy easy to win to attract more users.
     - Create a function to be able to give the player a win after a certain number of rounds, for example if they fail to win a jackpot in 10 spins on the 11th they will be rewarded with a jackpot.
     - Create a hidden function, 3 things - after a set number of rounds have the player win a low level jackpot, after another set number have the second level jackpot, and then after a set number of rounds have the player win the largest jackpot.
 
