@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 'use strict';
 
 //imagePool array for holding all gameImage Objects
@@ -15,48 +16,18 @@ function GameImage (name, imagePath, wagerMultiplier) {
 
 //creating gameImage Objects using constructor
 new GameImage('cherry', 'assets/cherry.png', 5);
-new GameImage('bananas', 'assets/bananas.png', 1);
-new GameImage('carrot', 'assets/carrot.png', 1);
-new GameImage('lemon', 'assets/lemon.png', 1);
+new GameImage('bananas', 'assets/bananas.png', 0);
+new GameImage('carrot', 'assets/carrot.png', 0);
+new GameImage('lemon', 'assets/lemon.png', 0);
 new GameImage('seven', 'assets/seven.png', 10);
 // new GameImage('orange', 'assets/orange.jpg', 10);
 new GameImage('gold', 'assets/gold.png', 15);
 
-//creating variables to access img tags in html
-//double check id's when design team has created these elements on index.html
-// var getImage1 = document.getElementById('img1');
-// var getImage2 = document.getElementById('img2');
-// var getImage3 = document.getElementById('img3');
 // //creating variables to access wager buttons in html
 var getWager1 = document.getElementById('bet1');
 var getWager5 = document.getElementById('bet5');
 var getWager10 = document.getElementById('bet10');
 
-//function to generate random image based on on imagePool
-// function randomImageGenerator() {
-//   var i = Math.floor(Math.random() * imagePool.length);
-//   return imagePool[i];
-// }
-
-//function to render new images on to the page.
-// function renderGameImage() {
-
-//   var newImage1 = randomImageGenerator();
-
-//   getImage1.src = newImage1.imagePath;
-//   getImage1.name = newImage1.name;
-
-//   var newImage2 = randomImageGenerator();
-
-//   getImage2.src = newImage2.imagePath;
-//   getImage2.name = newImage2.name;
-
-//   var newImage3 = randomImageGenerator();
-
-//   getImage3.src = newImage3.imagePath;
-//   getImage3.name = newImage3.name;
-
-// }
 
 //function to update credit balance
 function creditUpdate() {
@@ -100,18 +71,55 @@ function statusUpdate(status) {
 
 
 function calculateEarnings(wager) {
-  //grab the new images that were generated
-  var getImage1 = document.getElementById('img1');
-  var getImage2 = document.getElementById('img2');
-  var getImage3 = document.getElementById('img3');
+  //The output from the spinning wheel is nolonger a img. It is a tag class for the div that holds the ring.
+  // spin-1 = carrot;
+  // spin-2 = lemon;
+  // spin-3 = seven;
+  // spin-4 = gold;
+  // spin-5 = cherry;
+  // spin-6 = bananas;
+  // since it has two class attr, we need to slice 5 to get the spin-#;
+  var img1 = document.getElementById('ring1').classList.value.slice(5);
+  var img2 = document.getElementById('ring2').classList.value.slice(5);
+  var img3 = document.getElementById('ring3').classList.value.slice(5);
+  function getName(img){
+    let imageName;
+    switch (img) {
+      case 'spin-1':
+        imageName = 'carrot';
+        break;
+      case 'spin-2':
+        imageName = 'lemon';
+        break;
+      case 'spin-3':
+        imageName = 'seven';
+        break;
+      case 'spin-4':
+        imageName = 'gold';
+        break;
+      case 'spin-5':
+        imageName = 'cherry';
+        break;
+      case 'spin-6':
+        imageName = 'bananas';
+        break;
+    }
+    return imageName;
+  }
+
+
+  var getImage1 = getName(img1);
+  var getImage2 = getName(img2);
+  var getImage3 = getName(img3);
+
   var getStatusBox = document.getElementById('status-winningRound');
 
   //compares image one and image two for a match
-  if (getImage1.name === getImage2.name) {
+  if (getImage1 === getImage2) {
     //if 1 and 2 match compare image 2 and image 3 for a match
-    if (getImage2.name === getImage3.name) {
+    if (getImage2 === getImage3) {
       //if all three match, create a varable that is equal to the name of the matched type
-      var matchOfThree = getImage1.name;
+      var matchOfThree = getImage1;
       //Take the name and run it through the imagePool array
       for (var i in imagePool) {
         //Compares imagePool names compared to matched name
@@ -145,11 +153,10 @@ function calculateEarnings(wager) {
 
 //click handler for handling when a wager button is clicked
 function clickHandler(event) {
+  start();
   console.log('clicked');
   var wager = event.target.value;
-  // renderGameImage();
-  // calculateEarnings(wager);
-  start();
+  calculateEarnings(wager);
 }
 
 //add listener to html elements for click handler
@@ -231,15 +238,11 @@ function spin(timer) {
 
     // now everytime click the spin button, the ring number tag will be assigned an animation and the class will be updated accordingly. Details effect could be found in
     let ring= document.getElementById('ring'+i);
-    ring.style.animation= '1s ease 0s 1 normal none running back-spin, ' + (timer + i*0.5) + 's' + ' ' +  'ease 0s 1 normal none running spin-' + seed;
+    ring.style.animation= '1s ease 0s 1 normal none running back-spin, ' + (timer + i*0.5) + 's' + ' ' + 'ease 0s 1 normal none running spin-' + seed;
     ring.className = String('ring spin-' + seed);
 
   }
-
-
 }
-
-
 
 function start(){
   var timer = 2;
