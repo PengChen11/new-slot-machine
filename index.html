@@ -4,8 +4,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project: Slot Machine</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-  
+  <div id="status">
+    <div id="status-winningRound">
+      <p>Get 3 of a kind to win a jackpot!</p>
+    </div>
+    <div id="status-creditBox">
+      <div id="status-creditBox-text">
+        <h2>Credit:</h2>
+      </div>
+      <div id="status-dollar">
+        <p>$100</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="wagers">
+     <div id="buttons">
+      <h2>Wagers:</h2>
+      <button value ="1" id="bet1">$1</button>
+      <button value ="5" id="bet5">$5</button>
+      <button value ="10" id="bet10">$10</button>
+    </div>
+    <div id="multipliers">
+      <p>3x Gold = <br>15x Wager</p> <br>
+      <p>3x 7's = <br>10x Wager</p> <br>
+      <p>3x cherries = <br>5x Wager</p>
+    </div>
+  </div>
+
+  <div id="slot">
+    <div id="slot-images">
+      <div class="images">
+        <img id="img1" src="https://via.placeholder.com/150x300/DDDDDD">
+      </div>
+      <div class="images">
+        <img id="img2" src="https://via.placeholder.com/150x300/DDDDDD">
+      </div>
+      <div class="images">
+        <img id="img3" src="https://via.placeholder.com/150x300/DDDDDD">
+    </div>
+  </div>
+  <footer>
+    <p id="victory">Win the game by <br> reaching $1,000!</p>
+  </footer>
+  <script src="js/app.js"></script>
 </body>
 </html>
