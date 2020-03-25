@@ -167,24 +167,18 @@ button:hover{
     position: relative;
     top:434px;
     left:55px;
-    /* width:182px;
-    height: 232px; */
 }
 #ring2{
     display: inline-block;
     position: relative;
     top: 433px;
     left: 150px;
-    /* width:182px;
-    height: 232px; */
 }
 #ring3{
     display: inline-block;
     position: relative;
     top: 432px;
     left:240px;
-    /* width:182px;
-    height: 232px; */
 
 }
   
@@ -195,7 +189,8 @@ button:hover{
     display: inline-block;
     transform-style: preserve-3d;
 }
-  
+
+/* this give the slots in the back hidden status */
 .slot {
     position: absolute;
     width: 130px;
@@ -213,7 +208,7 @@ button:hover{
             backface-visibility: visible;
 }
   
-  
+  /* this is the annamation controls how it will spin. */
 .spin-1     { transform: rotateX(-3719deg); }
 .spin-2     { transform: rotateX(-3779deg); }
 .spin-3     { transform: rotateX(-3839deg); }
