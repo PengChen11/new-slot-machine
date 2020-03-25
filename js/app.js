@@ -211,8 +211,8 @@ createSlots(ring3);
 
 function getSeed() {
   // generate random number smaller than 6 then floor it to settle between 0 and 5 inclusive
-  // return Math.ceil(Math.random()*(SLOTS_PER_REEL));
-  return 1;
+  return Math.ceil(Math.random()*(SLOTS_PER_REEL));
+  // return 1;
 }
 
 function spin(timer) {
