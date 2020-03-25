@@ -3,7 +3,6 @@
 //imagePool array for holding all gameImage Objects
 var imagePool = [];
 var credits = 100;
-var wager = 0;
 
 //construction function to create image objects
 function GameImage (name, imagePath, wagerMultiplier) {
@@ -11,13 +10,17 @@ function GameImage (name, imagePath, wagerMultiplier) {
   this.imagePath = imagePath;
   this.wagerMultiplier = wagerMultiplier;
   imagePool.push(this);
+  imageWeight.push(this.weight);
 }
 
 //creating gameImage Objects using constructor
 new GameImage('cherry', 'assets/cherry.png', 5);
+new GameImage('bananas', 'assets/bananas.png', 5);
+new GameImage('carrot', 'assets/carrot.png', 5);
+new GameImage('lemon', 'assets/lemon.png', 5);
 new GameImage('seven', 'assets/seven.png', 10);
+new GameImage('orange', 'assets/orange.jpg', 10);
 new GameImage('gold', 'assets/gold.png', 15);
-console.log(imagePool);
 
 //creating variables to access img tags in html
 //double check id's when design team has created these elements on index.html
@@ -64,34 +67,68 @@ function creditUpdate() {
 
   //clear previous data and adds new content to P tag
   getCredit.innerHTML = null;
-  createParagraph.innerHTML = '$' + credits;
-  //adds new message to paragraph and appends to document
-  getCredit.appendChild(createParagraph);
+  if (credits > 0 && credits < 1000) {
+    createParagraph.innerHTML = '$' + credits;
+    //adds new message to paragraph and appends to document
+    getCredit.appendChild(createParagraph);
+  } else if (credits >= 1000) {
+    createParagraph.innerHTML = '$' + credits;
+    //adds new message to paragraph and appends to document
+    getCredit.appendChild(createParagraph);
+    alert('You have won by reaching more than $1000!');
+  } else {
+    credits = 0;
+    createParagraph.innerHTML = '$' + credits;
+    getCredit.appendChild(createParagraph);
+    alert('You ran out of money!');
+  }
 }
 
+function calculateEarnings(wager) {
+  //grab the new images that were generated
+  var getImage1 = document.getElementById('img1');
+  var getImage2 = document.getElementById('img2');
+  var getImage3 = document.getElementById('img3');
+  //compares image one and image two for a match
+  if (getImage1.name === getImage2.name) {
+    //if 1 and 2 match compare image 2 and image 3 for a match
+    if (getImage2.name === getImage3.name) {
+      //if all three match, create a varable that is equal to the name of the matched type
+      var matchOfThree = getImage1.name;
+      //Take the name and run it through the imagePool array
+      for (var i in imagePool) {
+        //Compares imagePool names compared to matched name
+        if (imagePool[i].name === matchOfThree) {
+          //when a match is found create a winningResult variable which is wager * wagerMultiplier
+          var winningResult = (imagePool[i].wagerMultiplier * wager);
+          //add winningResults to global varaible credits and run creditUpdate
+          credits += winningResult;
+          creditUpdate();
+        }
+      }
+    } else { //this happens when 1 and 2 match but 2 and 3 do not match
+      //create removeWager that turns wager amount negative
+      var removeWager = wager * -1;
+      //add removeWager to global variable credits and runs creditUpdate.
+      credits += removeWager;
+      creditUpdate();
+    }
+  } else { //if image one and two do not match
+    //create removeWager that turns wager amount negative
+    // eslint-disable-next-line no-redeclare
+    var removeWager = wager * -1;
+    //add removeWager to global variable credits and runs creditUpdate.
+    credits += removeWager;
+    creditUpdate();
+  }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//click handler for handling when a water is clicked
+//click handler for handling when a wager button is clicked
 function clickHandler(event) {
-  wager = event.target.value;
-
-  console.log(wager);
+  console.log('clicked');
+  var wager = event.target.value;
   renderGameImage();
+  calculateEarnings(wager);
 }
 
 //add listener to html elements for click handler
@@ -100,4 +137,5 @@ getWager1.addEventListener('click', clickHandler);
 getWager5.addEventListener('click', clickHandler);
 getWager10.addEventListener('click', clickHandler);
 
-
+//this is ran on page load to generate the first 3 images
+renderGameImage();
