@@ -3,6 +3,7 @@
 //imagePool array for holding all gameImage Objects
 var imagePool = [];
 var credits = 100;
+var winningResult = 0;
 
 //construction function to create image objects
 function GameImage (name, imagePath, wagerMultiplier) {
@@ -14,7 +15,7 @@ function GameImage (name, imagePath, wagerMultiplier) {
 
 //creating gameImage Objects using constructor
 new GameImage('cherry', 'assets/cherry.png', 5);
-new GameImage('bananas', 'assets/bananas.png', 5);
+// new GameImage('bananas', 'assets/bananas.png', 5);
 // new GameImage('carrot', 'assets/carrot.png', 5);
 // new GameImage('lemon', 'assets/lemon.png', 5);
 new GameImage('seven', 'assets/seven.png', 10);
@@ -62,10 +63,13 @@ function creditUpdate() {
 
   //variable to access credit element in html and create a <p> tag
   var getCredit = document.getElementById('status-dollar');
+  var getStatusBox = document.getElementById('status-winningRound');
   var createParagraph = document.createElement('p');
 
   //clear previous data and adds new content to P tag
   getCredit.innerHTML = null;
+  getStatusBox.innerHTML = null;
+
   if (credits > 0 && credits < 1000) {
     createParagraph.innerHTML = '$' + credits;
     //adds new message to paragraph and appends to document
@@ -83,11 +87,25 @@ function creditUpdate() {
   }
 }
 
+//function updates status box
+function statusUpdate(status) {
+  var getStatusBox = document.getElementById('status-winningRound');
+  var createParagraph = document.createElement('p');
+  getStatusBox.innerHTML = null;
+
+  createParagraph.innerHTML = 'You have won $' + status + '!';
+  getStatusBox.appendChild(createParagraph);
+}
+
+
+
 function calculateEarnings(wager) {
   //grab the new images that were generated
   var getImage1 = document.getElementById('img1');
   var getImage2 = document.getElementById('img2');
   var getImage3 = document.getElementById('img3');
+  var getStatusBox = document.getElementById('status-winningRound');
+
   //compares image one and image two for a match
   if (getImage1.name === getImage2.name) {
     //if 1 and 2 match compare image 2 and image 3 for a match
@@ -103,12 +121,14 @@ function calculateEarnings(wager) {
           //add winningResults to global varaible credits and run creditUpdate
           credits += winningResult;
           creditUpdate();
+          statusUpdate(winningResult);
         }
       }
     } else { //this happens when 1 and 2 match but 2 and 3 do not match
       //create removeWager that turns wager amount negative
       var removeWager = wager * -1;
       //add removeWager to global variable credits and runs creditUpdate.
+      getStatusBox.innerHTML = null;
       credits += removeWager;
       creditUpdate();
     }
@@ -117,6 +137,7 @@ function calculateEarnings(wager) {
     // eslint-disable-next-line no-redeclare
     var removeWager = wager * -1;
     //add removeWager to global variable credits and runs creditUpdate.
+    getStatusBox.innerHTML = null;
     credits += removeWager;
     creditUpdate();
   }
