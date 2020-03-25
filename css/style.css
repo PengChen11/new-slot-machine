@@ -73,7 +73,7 @@ body{
     display: inline-block;
     vertical-align: top;
     background-color: rgb(250, 217, 73);
-    width: 180px;
+    width: 190px;
     height: 820px;
 }
 
@@ -83,6 +83,7 @@ body{
     font-size: 25px;
     text-align: center;
     margin-top: 35px;
+    margin-left: 10px;
 }
 
 /* 1 5 10 buttons */
@@ -97,7 +98,7 @@ button{
     width: 159px;
     height: 75px;
     margin-left: 15px;
-    margin-top: 75px;
+    margin-top: 60px;
 }
 
 button:hover{
@@ -109,14 +110,20 @@ button:hover{
 
 /* instructions */
 #multipliers{
+    border: solid silver thick;
     display: inline-block;
     font-family: 'Press Start 2P', cursive;
     text-align: center;
-    margin-top: 70px;
-    margin-left: 7px;
-    height: 160px;
-    padding-top: 50x;
+    background-color: rgb(112, 228, 69);
+    margin-top: 65px;
+    margin-left: 0px;
+    height: 280px;
+    /* padding-top: 50x; */
     font-size: 15px;
+}
+
+#multipliers p img {
+    width: 40px;
 }
 
 #multipliers p {
@@ -261,4 +268,11 @@ button:hover{
       0%    { transform: rotateX(30deg); }
       100%  { transform: rotateX(-4019deg); }
 }
-  
+
+#fruits img{
+    padding-top: 5px;
+}
+
+#banana {
+    margin-left: 50px;
+}
