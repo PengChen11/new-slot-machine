@@ -16,9 +16,9 @@ function GameImage (name, imagePath, wagerMultiplier) {
 
 //creating gameImage Objects using constructor
 new GameImage('cherry', 'assets/cherry.png', 5);
-new GameImage('bananas', 'assets/bananas.png', 0);
-new GameImage('carrot', 'assets/carrot.png', 0);
-new GameImage('lemon', 'assets/lemon.png', 0);
+new GameImage('bananas', 'assets/bananas.png', 5);
+new GameImage('carrot', 'assets/carrot.png', 5);
+new GameImage('lemon', 'assets/lemon.png', 5);
 new GameImage('seven', 'assets/seven.png', 10);
 // new GameImage('orange', 'assets/orange.jpg', 10);
 new GameImage('gold', 'assets/gold.png', 15);

@@ -64,19 +64,17 @@ body{
     font-family: 'Press Start 2P', cursive;
     font-size: 30px;
     width: 20px;
-    margin-left: 20px;
+    margin-left: 50px;
 
 }
 
 /* left wager box w instructions */
 #wagers{
-    border: solid black thin;
     display: inline-block;
     vertical-align: top;
     background-color: rgb(250, 217, 73);
     width: 180px;
-    height: 800px;
-    margin-top: 20px;
+    height: 820px;
 }
 
 #wagers h2{
@@ -111,7 +109,6 @@ button:hover{
 
 /* instructions */
 #multipliers{
-    border: solid black thin;
     display: inline-block;
     font-family: 'Press Start 2P', cursive;
     text-align: center;
