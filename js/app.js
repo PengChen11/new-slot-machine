@@ -4,24 +4,24 @@
 //imagePool array for holding all gameImage Objects
 var imagePool = [];
 var credits = 100;
-var winningResult = 0;
+// var winningResult = 0;
 
 //construction function to create image objects
-function GameImage (name, imagePath, wagerMultiplier) {
+function GameImage (name, imagePath, wagerMultiplier, matchOftwoMultiplier) {
   this.name = name;
   this.imagePath = imagePath;
   this.wagerMultiplier = wagerMultiplier;
+  this.matchOftwoMultiplier = matchOftwoMultiplier;
   imagePool.push(this);
 }
 
 //creating gameImage Objects using constructor
-new GameImage('cherry', 'assets/cherry.png', 5);
-new GameImage('bananas', 'assets/bananas.png', 5);
-new GameImage('carrot', 'assets/carrot.png', 5);
-new GameImage('lemon', 'assets/lemon.png', 5);
-new GameImage('seven', 'assets/seven.png', 10);
-// new GameImage('orange', 'assets/orange.jpg', 10);
-new GameImage('gold', 'assets/gold.png', 15);
+new GameImage('cherry', 'assets/cherry.png', 5, 2);
+new GameImage('bananas', 'assets/bananas.png', 5, 2);
+new GameImage('carrot', 'assets/carrot.png', 5, 2);
+new GameImage('lemon', 'assets/lemon.png', 5, 2);
+new GameImage('seven', 'assets/seven.png', 10, 3);
+new GameImage('gold', 'assets/gold.png', 15, 5);
 
 // //creating variables to access wager buttons in html
 var getWager1 = document.getElementById('bet1');
@@ -82,7 +82,7 @@ function calculateEarnings(wager) {
   var img1 = document.getElementById('ring1').classList.value.slice(5);
   var img2 = document.getElementById('ring2').classList.value.slice(5);
   var img3 = document.getElementById('ring3').classList.value.slice(5);
-  
+
   // since we are checking the class tags, we will need to associate that with an image name in the imagePool
   function getName(img){
     var imageName;
@@ -116,33 +116,61 @@ function calculateEarnings(wager) {
 
   var getStatusBox = document.getElementById('status-winningRound');
 
-  //compares image one and image two for a match
-  if (getImage1 === getImage2) {
-    //if 1 and 2 match compare image 2 and image 3 for a match
-    if (getImage2 === getImage3) {
-      //if all three match, create a varable that is equal to the name of the matched type
-      var matchOfThree = getImage1;
-      //Take the name and run it through the imagePool array
+  //THREE OF A KIND WIN CONDITION
+  if (getImage1 === getImage2 && getImage1 === getImage3) {
+    //if all three match, create a varable that is equal to the name of the matched type
+    var matchOfThree = getImage1;
+    //Take the name and run it through the imagePool array
+    for (var i in imagePool) {
+      //Compares imagePool names compared to matched name
+      if (imagePool[i].name === matchOfThree) {
+        //when a match is found create a winningResult variable which is wager * wagerMultiplier
+        var winningResult = (imagePool[i].wagerMultiplier * wager);
+        //add winningResults to global varaible credits and run creditUpdate
+        credits += winningResult;
+        creditUpdate();
+        statusUpdate(winningResult);
+        console.log('Jackpot! You matched three in a row!');
+      }
+    }
+  } else if ( //two of a kind match in a row
+      getImage1 === getImage2 && getImage1 !== getImage3 ||
+      getImage2 === getImage3 && getImage2 !== getImage1) {
+      //if there is a match of two in a row, 1st and 2nd or 2nd and 3rd pictures
+      var matchOfTwo = getImage2;
+        console.log(getImage2);
       for (var i in imagePool) {
         //Compares imagePool names compared to matched name
-        if (imagePool[i].name === matchOfThree) {
+        if (imagePool[i].name === matchOfTwo) {
           //when a match is found create a winningResult variable which is wager * wagerMultiplier
-          var winningResult = (imagePool[i].wagerMultiplier * wager);
+          var winningResult = (imagePool[i].matchOftwoMultiplier * wager);
+          console.log(winningResult);
           //add winningResults to global varaible credits and run creditUpdate
           credits += winningResult;
           creditUpdate();
           statusUpdate(winningResult);
+          console.log('you matched two in a row!');
         }
       }
-    } else { //this happens when 1 and 2 match but 2 and 3 do not match
-      //create removeWager that turns wager amount negative
-      var removeWager = wager * -1;
-      //add removeWager to global variable credits and runs creditUpdate.
-      getStatusBox.innerHTML = null;
-      credits += removeWager;
-      creditUpdate();
+  } else if ( //two of a kind match img 1 and img 3
+    getImage1 === getImage3 && getImage1 !== getImage2) {
+    //if there is a match of two in a row, 1st and 2nd or 2nd and 3rd pictures
+    var matchOfTwo = getImage1;
+      console.log(getImage1);
+    for (var i in imagePool) {
+      //Compares imagePool names compared to matched name
+      if (imagePool[i].name === matchOfTwo) {
+        //when a match is found create a winningResult variable which is wager * wagerMultiplier
+        var winningResult = (imagePool[i].matchOftwoMultiplier * wager);
+        console.log(winningResult);
+        //add winningResults to global varaible credits and run creditUpdate
+        credits += winningResult;
+        creditUpdate();
+        statusUpdate(winningResult);
+        console.log('you matched two! first and third images!');
+      }
     }
-  } else { //if image one and two do not match
+  } else {//if there are no matches at all this runs
     //create removeWager that turns wager amount negative
     // eslint-disable-next-line no-redeclare
     var removeWager = wager * -1;
@@ -150,18 +178,59 @@ function calculateEarnings(wager) {
     getStatusBox.innerHTML = null;
     credits += removeWager;
     creditUpdate();
+    console.log('you lost!');
   }
 }
+
+
+// *********************************** old code remove after test *************************************************
+  //compares image one and image two for a match
+  // if (getImage1 === getImage2) {
+  //   //if 1 and 2 match compare image 2 and image 3 for a match
+  //   if (getImage2 === getImage3) {
+      // //if all three match, create a varable that is equal to the name of the matched type
+      // var matchOfThree = getImage1;
+      // //Take the name and run it through the imagePool array
+      // for (var i in imagePool) {
+      //   //Compares imagePool names compared to matched name
+      //   if (imagePool[i].name === matchOfThree) {
+      //     //when a match is found create a winningResult variable which is wager * wagerMultiplier
+      //     var winningResult = (imagePool[i].wagerMultiplier * wager);
+      //     //add winningResults to global varaible credits and run creditUpdate
+      //     credits += winningResult;
+      //     creditUpdate();
+      //     statusUpdate(winningResult);
+  //       }
+  //     }
+  //   } else { //this happens when 1 and 2 match but 2 and 3 do not match
+  //     //create removeWager that turns wager amount negative
+  //     var removeWager = wager * -1;
+  //     //add removeWager to global variable credits and runs creditUpdate.
+  //     getStatusBox.innerHTML = null;
+  //     credits += removeWager;
+  //     creditUpdate();
+  //   }
+  // } else { //if image one and two do not match
+  //   //create removeWager that turns wager amount negative
+  //   // eslint-disable-next-line no-redeclare
+  //   var removeWager = wager * -1;
+  //   //add removeWager to global variable credits and runs creditUpdate.
+  //   getStatusBox.innerHTML = null;
+  //   credits += removeWager;
+  //   creditUpdate();
+  // }
+    // }
+
+// ******************************************************************************************************************
 
 //click handler for handling when a wager button is clicked
 function clickHandler(event) {
   start();
-  console.log('clicked');
   var wager = event.target.value;
   // since start function will spin the wheels 3.5s, we set a delay timer for 4s so the result won't pop up before the wheel stops.
   setTimeout(function (){
     calculateEarnings(wager);
-  }, 4000);
+  }, 3600);
 }
 
 //add listener to html elements for click handler
@@ -249,8 +318,7 @@ function spin(timer) {
   }
 }
 // function to start the spin
-function start(){
+function start() {
   var timer = 2;
   spin(timer);
 }
-
