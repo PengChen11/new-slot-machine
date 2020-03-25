@@ -146,30 +146,6 @@ button:hover{
     position: relative;
 }
 
-.images{
-    /* border: solid black thin; */
-    display: inline-block;
-    height: 200px;
-    width: 150px;
-    margin-top: 390px;
-}
-
-.images img{
-    /* border: solid black thin; */
-    display: inline-block;
-    height: 200px;
-    width: 150px;
-}
-
-#img1{
-    margin-left: 74px;
-}
-#img2{
-    margin-left: 150px;
-}
-#img3{
-    margin-left: 230px;
-}
 
 /* footer  */
 #victory{
@@ -186,3 +162,111 @@ button:hover{
     margin-right: auto;
     text-align: center;
 }
+
+/* following is the CSS for spinning machine */
+
+#ring1{
+    display: inline-block;
+    position: relative;
+    top:434px;
+    left:55px;
+    /* width:182px;
+    height: 232px; */
+}
+#ring2{
+    display: inline-block;
+    position: relative;
+    top: 433px;
+    left: 150px;
+    /* width:182px;
+    height: 232px; */
+}
+#ring3{
+    display: inline-block;
+    position: relative;
+    top: 432px;
+    left:240px;
+    /* width:182px;
+    height: 232px; */
+
+}
+  
+.ring {
+    margin: 0 auto;
+    height: 83px;
+    width: 130px;
+    display: inline-block;
+    transform-style: preserve-3d;
+}
+  
+.slot {
+    position: absolute;
+    width: 130px;
+    height: 83px;
+    box-sizing: border-box;
+    color: rgba(0,0,0,0.9);
+    -webkit-backface-visibility: hidden;
+       -moz-backface-visibility: hidden;
+            backface-visibility: hidden;
+}
+  
+.backface-on {
+    -webkit-backface-visibility: visible;
+       -moz-backface-visibility: visible;
+            backface-visibility: visible;
+}
+  
+  
+.spin-1     { transform: rotateX(-3719deg); }
+.spin-2     { transform: rotateX(-3779deg); }
+.spin-3     { transform: rotateX(-3839deg); }
+.spin-4     { transform: rotateX(-3899deg); }
+.spin-5     { transform: rotateX(-3959deg); }
+.spin-6    { transform: rotateX(-4019deg); }
+@keyframes back-spin {
+      /*0%    { transform: rotateX(0deg); }*/
+      100%  { transform: rotateX(30deg); }
+}
+
+@keyframes tiltin {
+      0%    { transform: rotateY(0deg);}
+      50%   { transform: rotateY(0deg);}
+      100%  { transform: rotateY(45deg);}
+}
+
+@keyframes tiltout {
+      0%    { transform: rotateY(45deg);}
+      100%  { transform: rotateY(0deg);}
+}
+
+  
+@keyframes spin-1 {
+      0%    { transform: rotateX(30deg); }
+      100%  { transform: rotateX(-3719deg); }
+}
+
+@keyframes spin-2 {
+      0%    { transform: rotateX(30deg); }
+      100%  { transform: rotateX(-3779deg); }
+}
+
+@keyframes spin-3 {
+      0%    { transform: rotateX(30deg); }
+      100%  { transform: rotateX(-3839deg); }
+}
+
+@keyframes spin-4 {
+      0%    { transform: rotateX(30deg); }
+      100%  { transform: rotateX(-3899deg); }
+}
+
+@keyframes spin-5 {
+      0%    { transform: rotateX(30deg); }
+      100%  { transform: rotateX(-3959deg); }
+}
+
+@keyframes spin-6 {
+      0%    { transform: rotateX(30deg); }
+      100%  { transform: rotateX(-4019deg); }
+}
+  
