@@ -3,7 +3,7 @@
 }
 
 body{
-    border: solid black thin;
+    border: solid black thick;
     width: 1500px;
     margin: 50px auto;
     background-color: rgb(162, 207, 223);
@@ -18,7 +18,7 @@ body{
 
 /* get 3 of a kind to win a jackpot! */
 #status-winningRound{
-    border: solid black thin;
+    /* border: solid black thin; */
     display: inline-block;
     vertical-align: top;
     text-align: center;
@@ -26,15 +26,16 @@ body{
     font-size: 20px;
     height: 40px;
     width: 700px;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 /*  */
 #status-creditBox{
-    border: solid black thin;
+    border: solid black thick;
     display: inline-block;
     margin-left: 100px;
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     height: 75px;
     width: 500px;
 }
@@ -47,16 +48,18 @@ body{
 
 /* credit: */
 #status-creditBox-text h2{
-    border: solid black thin;
+    /* border: solid black thin; */
     color: black;
     font-family: 'Press Start 2P', cursive;
     text-align: left;
     font-size: 35px;
+    padding-top: 20px;
+    margin-left: 20px;
 }
 
 /* $100 */
 #status-dollar{
-    border: solid black thin;
+    /* border: solid black thin; */
     display: inline-block;
     font-family: 'Press Start 2P', cursive;
     font-size: 35px;
@@ -113,19 +116,24 @@ button:hover{
     font-family: 'Press Start 2P', cursive;
     text-align: center;
     margin-top: 100px;
-    margin-left: 15px;
+    margin-left: 10px;
     height: 150px;
     padding-top: 50x;
+}
+
+#multipliers p {
+    /* padding-top: 5px; */
+    margin: 5px 5px 0px 5px ;
 }
 
 /* right box w images and text */
 #slot {
     background-image: url("../assets/newjackpot.png");
-    background-size: 1000px;
+    background-size: 850px;
     background-repeat: no-repeat;
     display: inline-block;
-    width: 1200px;
-    margin-left: 40px;
+    width: 900px;
+    margin-left: 160px;
     margin-top: 15px;
 }
 #slot-images{
@@ -139,34 +147,34 @@ button:hover{
     display: inline-block;
     height: 200px;
     width: 150px;
-    margin-top: 450px;
+    margin-top: 390px;
 }
 
 .images img{
     /* border: solid black thin; */
     display: inline-block;
-    height: 240px;
-    width: 210px;
+    height: 200px;
+    width: 150px;
 }
 
 #img1{
     margin-left: 74px;
 }
 #img2{
-    margin-left: 190px;
+    margin-left: 150px;
 }
 #img3{
-    margin-left: 307px;
+    margin-left: 230px;
 }
 
 /* footer  */
 #victory{
-    border: solid black thin;
+    /* border: solid black thin; */
     color: black;
     font-family: 'Press Start 2P', cursive;
     font-size: 50px;
-    text-align: center;
-    margin-top: 200px;
+    /* text-align: center; */
+    margin-top: 120px;
     width: 900px;
-    padding-left: 0px;
+    padding-top: 5px;
 }
