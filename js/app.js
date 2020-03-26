@@ -356,15 +356,19 @@ function spin(timer) {
     if(lastClass.length > 4) {
       lastSeed = parseInt(lastClass.slice(10)); // classList = 'ring spin-' with a number, subtract 10, leaves that number.
     }
-    var seed = getSeed(); // now compair that number with our 1-6 random number
-    while(lastSeed == seed) { // if it matchs, get a new one. Or the ring will not spin
-      seed = getSeed();
+    var seed = getSeed(); // now compair that number with our 1-6 random number. if the new spin equals the last spin, then we still want the ring to spin. thus we need to reset the annamation then re assign it.
+    if (lastSeed == seed) {
+      var ring= document.getElementById('ring'+i);
+      ring.style.animation = 'none';
+      ring.offsetHeight;
+      ring.style.animation= String('spin-' + seed + ' ' + (timer + i*0.5) + 's' + ' ' + ' ease');
+      ring.className = String('ring spin-' + seed);
+    } else {
+      var ring= document.getElementById('ring'+i);
+      ring.style.animation= String('spin-' + seed + ' ' + (timer + i*0.5) + 's' + ' ' + ' ease');
+      ring.className = String('ring spin-' + seed);
     }
-
     // now everytime when click the spin button, the ring number tag will be assigned an animation and the class attr will be updated accordingly. Details effect could be found in CSS file.
-    var ring= document.getElementById('ring'+i);
-    ring.style.animation= '1s ease 0s 1 normal none running back-spin, ' + (timer + i*0.5) + 's' + ' ' + 'ease 0s 1 normal none running spin-' + seed;
-    ring.className = String('ring spin-' + seed);
 
   }
 }
