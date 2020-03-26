@@ -1,5 +1,8 @@
 'use strict';
 /***** GLOBAL VARIABLES *****/
+var failTrackerSmall = 0;
+var failTrackerMid = 0;
+var failTrackerBig = 0;
 //imagePool array for holding all gameImage Objects
 var imagePool = [];
 //Starting credit amount for the game
@@ -18,13 +21,13 @@ function GameImage (name, imagePath, wagerMultiplier, matchOftwoMultiplier) {
   imagePool.push(this);
 }
 
-//creating gameImage Objects using constructor
+//creating gameImage Objects using constructor.Warning: the sequence of the array for following items are vital for win/loss ratio calculation. . don't alter the following order.
+new GameImage('seven', 'assets/seven.png', 10, 3);
+new GameImage('gold', 'assets/gold.png', 15, 5);
 new GameImage('cherry', 'assets/cherry.png', 5, 2);
 new GameImage('bananas', 'assets/bananas.png', 5, 2);
 new GameImage('carrot', 'assets/carrot.png', 5, 2);
 new GameImage('lemon', 'assets/lemon.png', 5, 2);
-new GameImage('seven', 'assets/seven.png', 10, 3);
-new GameImage('gold', 'assets/gold.png', 15, 5);
 
 //function to update credit balance for a win
 function creditUpdate() {
@@ -74,8 +77,6 @@ function statusUpdate(status) {
 
 //function to calculate how much creadit you've earned/lost per spin
 function calculateEarnings(wager) {
-  //The output from the spinning wheel is no longer a img. It is a tag class for the div that holds the ring.
-  // spin-1 = carrot, spin-2 = lemon, spin-3 = seven, spin-4 = gold, spin-5 = cherry, spin-6 = bananas;
 
   // since it has two class attr, we need to slice 5 to get the spin-#;
   var img1 = document.getElementById('ring1').classList.value.slice(5);
@@ -104,6 +105,14 @@ function calculateEarnings(wager) {
         var winningResult = (imagePool[i].wagerMultiplier * wager);
         //add winningResults to global varaible credits and run creditUpdate
         credits += winningResult;
+        // this is to reset the fail tracher for different level of winning;
+        if (matchOfThree === 'gold'){
+          failTrackerBig = 0;
+        } else if (matchOfThree === 'seven'){
+          failTrackerMid = 0;
+        } else {
+          failTrackerSmall =0;
+        }
         creditUpdate();
         statusUpdate(winningResult);
       }
@@ -113,7 +122,6 @@ function calculateEarnings(wager) {
       getImage2 === getImage3 && getImage2 !== getImage1) {
     //if there is a match of two in a row, 1st and 2nd or 2nd and 3rd pictures
     var matchOfTwo = getImage2;
-    console.log(getImage2);
     if (matchOfTwo === 'gold' || matchOfTwo === 'seven') {
       // eslint-disable-next-line no-redeclare
       for (var i in imagePool) {
@@ -122,7 +130,6 @@ function calculateEarnings(wager) {
           //when a match is found create a winningResult variable which is wager * wagerMultiplier
           // eslint-disable-next-line no-redeclare
           var winningResult = (imagePool[i].matchOftwoMultiplier * wager);
-          console.log(winningResult);
           //add winningResults to global varaible credits and run creditUpdate
           credits += winningResult;
           creditUpdate();
@@ -132,6 +139,11 @@ function calculateEarnings(wager) {
     } else { //You lost, take the wager make it a negative value then add to credits and run creditUpdate
       creditUpdateLoss(wager);
     }
+    // everything doesn't equal to a 3 in a row will update the fail tracker
+    failTrackerSmall++;
+    failTrackerMid++;
+    failTrackerBig++;
+
   } else if ( //two of a kind match img 1 and img 3
     getImage1 === getImage3 && getImage1 !== getImage2) {
     //if there is a match of two in a row, 1st and 2nd or 2nd and 3rd pictures
@@ -155,9 +167,22 @@ function calculateEarnings(wager) {
       // eslint-disable-next-line no-redeclare
       creditUpdateLoss(wager);
     }
+    // everything doesn't equal to a 3 in a row will update the fail tracker
+    failTrackerSmall++;
+    failTrackerMid++;
+    failTrackerBig++;
+
   } else {//if there are no matches at all this runs
     creditUpdateLoss(wager);
+    // everything doesn't equal to a 3 in a row will update the fail tracker
+    failTrackerSmall++;
+    failTrackerMid++;
+    failTrackerBig++;
   }
+  console.log('small Fail ' + failTrackerSmall);
+  console.log('mid Fail ' + failTrackerMid);
+  console.log('big Fail ' + failTrackerBig);
+
 }
 
 //click handler for handling when a wager button is clicked

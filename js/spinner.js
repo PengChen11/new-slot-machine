@@ -1,30 +1,37 @@
 'use strict';
 /***** GLOBAL VARIABLES *****/
+//this is where you put the win/lose ratio. this means if the player fail for certain rounds to hit a 3 in a row winning, the system will give them a win at the next round.
+var winSetSmall = 5;
+var winSetMid = 10;
+var winSetBig = 15;
 // Define how many pictures will be used for each ring
 var SLOTS_PER_REEL = 6;
 // var radius = Math.round( ( 116 / 2) / Math.tan( Math.PI / SLOTS_PER_REEL ) );
 var REEL_RADIUS = 106; //106 is the number I tested out to make the ring size fit the windows of the slot machine.
 
+//The output from the spinning wheel is no longer a img. It is a tag class for the div that holds the ring.
+// spin-1 = carrot, spin-2 = lemon, spin-3 = seven, spin-4 = gold, spin-5 = cherry, spin-6 = bananas;
+
 function getName(img){
   var imageName;
   switch (img) {
   case 'spin-1':
-    imageName = 'carrot';
-    break;
-  case 'spin-2':
-    imageName = 'lemon';
-    break;
-  case 'spin-3':
-    imageName = 'seven';
-    break;
-  case 'spin-4':
-    imageName = 'gold';
-    break;
-  case 'spin-5':
     imageName = 'cherry';
     break;
-  case 'spin-6':
+  case 'spin-2':
     imageName = 'bananas';
+    break;
+  case 'spin-3':
+    imageName = 'carrot';
+    break;
+  case 'spin-4':
+    imageName = 'lemon';
+    break;
+  case 'spin-5':
+    imageName = 'seven';
+    break;
+  case 'spin-6':
+    imageName = 'gold';
     break;
   }
   return imageName;
@@ -65,12 +72,23 @@ createSlots(ring2);
 var ring3 = document.getElementById('ring3');
 createSlots(ring3);
 
-// just to get a random number between 1-6
+// function to determine which random picture to show when the spin stops. When we have a pre-set to affect the win/lose ratio, then it will compaire the fail rounds vs win rounds, and then return the number based on conditions.
 function getSeed() {
-  return Math.ceil(Math.random()*(SLOTS_PER_REEL));
-  // return 1;
+  var seedReturn;
+  if (failTrackerSmall === winSetSmall){
+    seedReturn = 2;
+  } else if(failTrackerMid === winSetMid){
+    seedReturn = 5;
+  } else if (failTrackerBig === winSetBig){
+    seedReturn = 6;
+  } else {
+    seedReturn = Math.ceil(Math.random()*(SLOTS_PER_REEL));
+  }
+  return seedReturn;
+
 }
 
+// this is the function to spin the rings.
 function spin(timer) {
   // Since we have 3 rings, we will spin one ring at a time, totally 3 times;
   for(var i = 1; i < 4; i ++) {
