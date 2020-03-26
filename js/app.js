@@ -116,6 +116,77 @@ function calculateEarnings(wager) {
 
   var getStatusBox = document.getElementById('status-winningRound');
 
+// ******************************************************************************************************************
+
+//   //THREE OF A KIND WIN CONDITION
+//   if (getImage1 === getImage2 && getImage1 === getImage3) {
+//     //if all three match, create a varable that is equal to the name of the matched type
+//     var matchOfThree = getImage1;
+//     //Take the name and run it through the imagePool array
+//     for (var i in imagePool) {
+//       //Compares imagePool names compared to matched name
+//       if (imagePool[i].name === matchOfThree) {
+//         //when a match is found create a winningResult variable which is wager * wagerMultiplier
+//         var winningResult = (imagePool[i].wagerMultiplier * wager);
+//         //add winningResults to global varaible credits and run creditUpdate
+//         credits += winningResult;
+//         creditUpdate();
+//         statusUpdate(winningResult);
+//         console.log('Jackpot! You matched three in a row!');
+//       }
+//     }
+//   } else if ( //two of a kind match in a row
+//       getImage1 === getImage2 && getImage1 !== getImage3 ||
+//       getImage2 === getImage3 && getImage2 !== getImage1) {
+//       //if there is a match of two in a row, 1st and 2nd or 2nd and 3rd pictures
+//       var matchOfTwo = getImage2;
+//         console.log(getImage2);
+//       for (var i in imagePool) {
+//         //Compares imagePool names compared to matched name
+//         if (imagePool[i].name === matchOfTwo) {
+//           //when a match is found create a winningResult variable which is wager * wagerMultiplier
+//           var winningResult = (imagePool[i].matchOftwoMultiplier * wager);
+//           console.log(winningResult);
+//           //add winningResults to global varaible credits and run creditUpdate
+//           credits += winningResult;
+//           creditUpdate();
+//           statusUpdate(winningResult);
+//           console.log('you matched two in a row!');
+//         }
+//       }
+//   } else if ( //two of a kind match img 1 and img 3
+//     getImage1 === getImage3 && getImage1 !== getImage2) {
+//     //if there is a match of two in a row, 1st and 2nd or 2nd and 3rd pictures
+//     var matchOfTwo = getImage1;
+//       console.log(getImage1);
+//     for (var i in imagePool) {
+//       //Compares imagePool names compared to matched name
+//       if (imagePool[i].name === matchOfTwo) {
+//         //when a match is found create a winningResult variable which is wager * wagerMultiplier
+//         var winningResult = (imagePool[i].matchOftwoMultiplier * wager);
+//         console.log(winningResult);
+//         //add winningResults to global varaible credits and run creditUpdate
+//         credits += winningResult;
+//         creditUpdate();
+//         statusUpdate(winningResult);
+//         console.log('you matched two! first and third images!');
+//       }
+//     }
+//   } else {//if there are no matches at all this runs
+//     //create removeWager that turns wager amount negative
+//     // eslint-disable-next-line no-redeclare
+//     var removeWager = wager * -1;
+//     //add removeWager to global variable credits and runs creditUpdate.
+//     getStatusBox.innerHTML = null;
+//     credits += removeWager;
+//     creditUpdate();
+//     console.log('you lost!');
+//   }
+// }
+
+
+// *********************************** new test code  *************************************************
+
   //THREE OF A KIND WIN CONDITION
   if (getImage1 === getImage2 && getImage1 === getImage3) {
     //if all three match, create a varable that is equal to the name of the matched type
@@ -139,37 +210,57 @@ function calculateEarnings(wager) {
       //if there is a match of two in a row, 1st and 2nd or 2nd and 3rd pictures
       var matchOfTwo = getImage2;
         console.log(getImage2);
-      for (var i in imagePool) {
-        //Compares imagePool names compared to matched name
-        if (imagePool[i].name === matchOfTwo) {
-          //when a match is found create a winningResult variable which is wager * wagerMultiplier
-          var winningResult = (imagePool[i].matchOftwoMultiplier * wager);
-          console.log(winningResult);
-          //add winningResults to global varaible credits and run creditUpdate
-          credits += winningResult;
-          creditUpdate();
-          statusUpdate(winningResult);
-          console.log('you matched two in a row!');
+      if (matchOfTwo === 'gold' || matchOfTwo === 'seven') {
+        // eslint-disable-next-line no-redeclare
+        for (var i in imagePool) {
+          //Compares imagePool names compared to matched name
+          if (imagePool[i].name === matchOfTwo) {
+            //when a match is found create a winningResult variable which is wager * wagerMultiplier
+            // eslint-disable-next-line no-redeclare
+            var winningResult = (imagePool[i].matchOftwoMultiplier * wager);
+            console.log(winningResult);
+            //add winningResults to global varaible credits and run creditUpdate
+            credits += winningResult;
+            creditUpdate();
+            statusUpdate(winningResult);
+            console.log('you matched two in a row!');
+          }
         }
+      } else {
+        var removeWager = wager * -1;
+        credits += removeWager;
+        creditUpdate();
+        console.log('you lost!');
       }
   } else if ( //two of a kind match img 1 and img 3
-    getImage1 === getImage3 && getImage1 !== getImage2) {
-    //if there is a match of two in a row, 1st and 2nd or 2nd and 3rd pictures
-    var matchOfTwo = getImage1;
+      getImage1 === getImage3 && getImage1 !== getImage2) {
+      //if there is a match of two in a row, 1st and 2nd or 2nd and 3rd pictures
+      // eslint-disable-next-line no-redeclare
+      var matchOfTwo = getImage1;
       console.log(getImage1);
-    for (var i in imagePool) {
-      //Compares imagePool names compared to matched name
-      if (imagePool[i].name === matchOfTwo) {
-        //when a match is found create a winningResult variable which is wager * wagerMultiplier
-        var winningResult = (imagePool[i].matchOftwoMultiplier * wager);
-        console.log(winningResult);
-        //add winningResults to global varaible credits and run creditUpdate
-        credits += winningResult;
+      if (matchOfTwo === 'gold' || matchOfTwo === 'seven') {
+        // eslint-disable-next-line no-redeclare
+        for (var i in imagePool) {
+          //Compares imagePool names compared to matched name
+          if (imagePool[i].name === matchOfTwo) {
+            //when a match is found create a winningResult variable which is wager * wagerMultiplier
+            // eslint-disable-next-line no-redeclare
+            var winningResult = (imagePool[i].matchOftwoMultiplier * wager);
+            console.log(winningResult);
+            //add winningResults to global varaible credits and run creditUpdate
+            credits += winningResult;
+            creditUpdate();
+            statusUpdate(winningResult);
+            console.log('you matched two! first and third images!');
+          }
+        }
+      } else {
+        // eslint-disable-next-line no-redeclare
+        var removeWager = wager * -1;
+        credits += removeWager;
         creditUpdate();
-        statusUpdate(winningResult);
-        console.log('you matched two! first and third images!');
+        console.log('you lost!');
       }
-    }
   } else {//if there are no matches at all this runs
     //create removeWager that turns wager amount negative
     // eslint-disable-next-line no-redeclare
@@ -182,46 +273,6 @@ function calculateEarnings(wager) {
   }
 }
 
-
-// *********************************** old code remove after test *************************************************
-  //compares image one and image two for a match
-  // if (getImage1 === getImage2) {
-  //   //if 1 and 2 match compare image 2 and image 3 for a match
-  //   if (getImage2 === getImage3) {
-      // //if all three match, create a varable that is equal to the name of the matched type
-      // var matchOfThree = getImage1;
-      // //Take the name and run it through the imagePool array
-      // for (var i in imagePool) {
-      //   //Compares imagePool names compared to matched name
-      //   if (imagePool[i].name === matchOfThree) {
-      //     //when a match is found create a winningResult variable which is wager * wagerMultiplier
-      //     var winningResult = (imagePool[i].wagerMultiplier * wager);
-      //     //add winningResults to global varaible credits and run creditUpdate
-      //     credits += winningResult;
-      //     creditUpdate();
-      //     statusUpdate(winningResult);
-  //       }
-  //     }
-  //   } else { //this happens when 1 and 2 match but 2 and 3 do not match
-  //     //create removeWager that turns wager amount negative
-  //     var removeWager = wager * -1;
-  //     //add removeWager to global variable credits and runs creditUpdate.
-  //     getStatusBox.innerHTML = null;
-  //     credits += removeWager;
-  //     creditUpdate();
-  //   }
-  // } else { //if image one and two do not match
-  //   //create removeWager that turns wager amount negative
-  //   // eslint-disable-next-line no-redeclare
-  //   var removeWager = wager * -1;
-  //   //add removeWager to global variable credits and runs creditUpdate.
-  //   getStatusBox.innerHTML = null;
-  //   credits += removeWager;
-  //   creditUpdate();
-  // }
-    // }
-
-// ******************************************************************************************************************
 
 //click handler for handling when a wager button is clicked
 function clickHandler(event) {
@@ -247,7 +298,7 @@ getWager10.addEventListener('click', clickHandler);
 var SLOTS_PER_REEL = 6;
 
 // var radius = Math.round( ( 116 / 2) / Math.tan( Math.PI / SLOTS_PER_REEL ) );
-var REEL_RADIUS = 106;  //106 is the number I tested out to make the ring size fit the windows of the slot machine.
+var REEL_RADIUS = 106; //106 is the number I tested out to make the ring size fit the windows of the slot machine.
 
 //This is the function to create individual rings. we will have 3 rings for the spinning machine;
 function createSlots (ring) {
