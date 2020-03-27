@@ -1,9 +1,9 @@
 'use strict';
 /***** GLOBAL VARIABLES *****/
 //this is where you put the win/lose ratio. this means if the player fail for certain rounds to hit a 3 in a row winning, the system will give them a win at the next round.
-var winSetSmall = 5;
-var winSetMid = 10;
-var winSetBig = 15;
+var winSetSmall;
+var winSetMid;
+var winSetBig;
 // Define how many pictures will be used for each ring
 var SLOTS_PER_REEL = 6;
 // var radius = Math.round( ( 116 / 2) / Math.tan( Math.PI / SLOTS_PER_REEL ) );
@@ -74,15 +74,16 @@ createSlots(ring3);
 
 // function to determine which random picture to show when the spin stops. When we have a pre-set to affect the win/lose ratio, then it will compaire the fail rounds vs win rounds, and then return the number based on conditions.
 function getSeed() {
-  var seedReturn;
+  var seedReturn = Math.ceil(Math.random()*(SLOTS_PER_REEL));
+
   if (failTrackerSmall === winSetSmall){
     seedReturn = 2;
-  } else if(failTrackerMid === winSetMid){
+  }
+  if(failTrackerMid === winSetMid){
     seedReturn = 5;
-  } else if (failTrackerBig === winSetBig){
+  }
+  if (failTrackerBig === winSetBig){
     seedReturn = 6;
-  } else {
-    seedReturn = Math.ceil(Math.random()*(SLOTS_PER_REEL));
   }
   return seedReturn;
 

@@ -39,7 +39,7 @@ function creditUpdate() {
 
   //clear previous data and adds new content to P tag
   getCredit.innerHTML = null;
-  getStatusBox.innerHTML = null;
+  getStatusBox.innerHTML = 'Get 3 of a kind to win a jackpot!';
   //conditional logic to determine the balance of credits
   if (credits > 0 && credits < 1000) {
     createParagraph.innerHTML = ' $' + credits;
@@ -108,8 +108,11 @@ function calculateEarnings(wager) {
         // this is to reset the fail tracher for different level of winning;
         if (matchOfThree === 'gold'){
           failTrackerBig = 0;
+          failTrackerMid = 0;
+          failTrackerSmall = 0;
         } else if (matchOfThree === 'seven'){
           failTrackerMid = 0;
+          failTrackerSmall = 0;
         } else {
           failTrackerSmall =0;
         }
@@ -179,9 +182,9 @@ function calculateEarnings(wager) {
     failTrackerMid++;
     failTrackerBig++;
   }
-  console.log('small Fail ' + failTrackerSmall);
-  console.log('mid Fail ' + failTrackerMid);
-  console.log('big Fail ' + failTrackerBig);
+  // console.log('small Fail ' + failTrackerSmall);
+  // console.log('mid Fail ' + failTrackerMid);
+  // console.log('big Fail ' + failTrackerBig);
 
 }
 
@@ -189,10 +192,20 @@ function calculateEarnings(wager) {
 function clickHandler(event) {
   //start function is on spinner.js which starts the spinning of the reels
   start();
+  // since start function will spin the wheels 3.5s, we set a delay timer for 3.6s so the result won't pop up before the wheel stops. At the mean time, we disable the buttons, so that people can't keep hitting the buttons to spin the machine.
+  var bet1El = document.getElementById('bet1');
+  var bet5El = document.getElementById('bet5');
+  var bet10El = document.getElementById('bet10');
+  bet1El.disabled = true;
+  bet5El.disabled = true;
+  bet10El.disabled = true;
+
   var wager = event.target.value;
-  // since start function will spin the wheels 3.5s, we set a delay timer for 3.6s so the result won't pop up before the wheel stops.
   setTimeout(function (){
     calculateEarnings(wager);
+    bet1El.disabled = false;
+    bet5El.disabled = false;
+    bet10El.disabled = false;
   }, 3600);
 }
 
