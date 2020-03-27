@@ -222,7 +222,7 @@ button:hover{
     transform-style: preserve-3d;
 }
 
-/* this give the slots in the back hidden status */
+/* this backface visibility the slots in the back hidden status */
 .slot {
     position: absolute;
     width: 130px;
@@ -234,11 +234,6 @@ button:hover{
             backface-visibility: hidden;
 }
   
-.backface-on {
-    -webkit-backface-visibility: visible;
-       -moz-backface-visibility: visible;
-            backface-visibility: visible;
-}
   /* this is the class we put under each ring# div to make sure the ring spins the same degrees with keyframes, so the user see the same picture when the ring stops  */
 .spin-1     { transform: rotateX(-3719deg); }
 .spin-2     { transform: rotateX(-3779deg); }
