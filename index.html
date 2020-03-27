@@ -31,14 +31,43 @@
       <button value ="10" id="bet10">$10</button>
     </div>
     <div id="multipliers">
-      <p>3x <img src="assets/gold.png" alt="gold bar"> = <br>15x Wager</p> <br>
+      <p id="access">3x <img src="assets/gold.png" alt="gold bar"> = <br>15x Wager</p> <br>
       <p>3x <img src="assets/seven.png" alt="a 7"> = <br>10x Wager</p> <br>
       <p id="fruits">3x <img src="assets/lemon.png" alt="lemon"> 
         <img src="assets/carrot.png" alt="carrot">
         <img id="banana" src="assets/bananas.png" alt="banana">
         <img src="assets/cherry.png" alt="cherry">
         <br> = 5x Wager</p><br>
-      <p>Get a pair and get a bonus!</p>
+      <p>Special combos get a bonus!</p>
+    </div>
+    <div id="hidden" style="display: none;">
+      <form id="password" style="display: none;">
+        <label>
+          PASSWORD:
+          <input type="password" name="password"></input>
+        </label>
+        <button type="submit" id="passSubmit">SUBMIT</button>
+        <button id="cancel">CANCEL</button>
+      </form>
+      <form id="cheatSheet" style="display: none;">
+        <p>Give the player: </p>
+        <label>
+          5X win per:
+          <input type="text" name="small" size="5"></input>
+          losing spins. 
+        </label>
+        <label>
+          10X win per:
+          <input type="text" name="mid" size="5"></input>
+          losing spins.
+        </label>
+        <label>
+          15X win per:
+          <input type="text" name="big" size="5"></input>
+          losing spins. 
+        </label>
+        <button id="cheatBut" type="submit">SUBMIT</button>
+      </form>
     </div>
   </div>
 
@@ -52,5 +81,7 @@
     <p id="victory">Win the game by <br> reaching $1,000!</p>
   </footer>
   <script src="js/app.js"></script>
+  <script src="js/spinner.js"></script>
+  <script src="js/hidden.js"></script>
 </body>
 </html>

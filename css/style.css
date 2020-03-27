@@ -1,5 +1,5 @@
 * {
-    border: solid black thin;
+    border: solid black thin;    
 }
 
 body{
@@ -7,18 +7,19 @@ body{
     width: 1080px;
     margin: 50px auto;
     background-color: rgb(162, 207, 223);
+   
 }
 
 /* header */
 #status{
-    border: solid black thin;
     display: inline-block;
     width:1080px;
+    border-bottom: solid silver thick;
+    background-color: rgb(120, 190, 216);
 }
 
 /* get 3 of a kind to win a jackpot! */
 #status-winningRound{
-    /* border: solid black thin; */
     display: inline-block;
     vertical-align: top;
     text-align: center;
@@ -32,9 +33,13 @@ body{
 /*  */
 #status-creditBox{
     border: solid black thick;
+    border-style: inset;
+    border-width: 7px;
+    border-color: silver;
+    background-color: snow;
     display: inline-block;
-    margin-left: 100px;
-    margin-top: 10px;
+    margin-left: 140px;
+    margin-top: 15px;
     margin-bottom: 10px;
     height: 75px;
     width: 400px;
@@ -48,18 +53,16 @@ body{
 
 /* credit: */
 #status-creditBox-text h2{
-    /* border: solid black thin; */
     color: black;
     font-family: 'Press Start 2P', cursive;
     text-align: left;
     font-size: 30px;
-    padding-top: 20px;
+    padding-top: 25px;
     margin-left: 20px;
 }
 
 /* $100 */
 #status-dollar{
-    /* border: solid black thin; */
     display: inline-block;
     font-family: 'Press Start 2P', cursive;
     font-size: 30px;
@@ -72,6 +75,8 @@ body{
 #wagers{
     display: inline-block;
     vertical-align: top;
+    border: solid silver thick;
+    border-top: none;
     background-color: rgb(250, 217, 73);
     width: 190px;
     height: 820px;
@@ -85,6 +90,7 @@ body{
     margin-top: 35px;
     margin-left: 10px;
 }
+
 
 /* 1 5 10 buttons */
 button{
@@ -110,16 +116,39 @@ button:hover{
 
 /* instructions */
 #multipliers{
-    border: solid silver thick;
+    border-top: solid silver thick;
     display: inline-block;
     font-family: 'Press Start 2P', cursive;
     text-align: center;
     background-color: rgb(112, 228, 69);
-    margin-top: 65px;
+    margin-top: 70px;
     margin-left: 0px;
     height: 280px;
-    /* padding-top: 50x; */
+    width: 190px;
     font-size: 15px;
+}
+#hidden{
+    border-top: solid silver thick;
+    display: inline-block;
+    font-family: 'Press Start 2P', cursive;
+    background-color: rgb(112, 228, 69);
+    margin-top: 70px;
+    margin-left: 0px;
+    height: 280px;
+    width: 190px;
+    font-size: 15px;
+
+}
+#hidden button{
+    font-size: 15px;
+    margin-top:20px;
+    width:110px;
+    height: 30px;
+}
+#hidden label{
+    font-size: 15px;
+    padding-top: 10px;
+    display:block;
 }
 
 #multipliers p img {
@@ -127,7 +156,6 @@ button:hover{
 }
 
 #multipliers p {
-    /* padding-top: 5px; */
     margin: 5px 5px 0px 5px ;
 }
 
@@ -143,7 +171,6 @@ button:hover{
     margin-top: 30px;
 }
 #slot-images{
-    /* border: solid black thin; */
     display: inline-block;
     width: 840px;
     height: 700px;
@@ -153,11 +180,9 @@ button:hover{
 
 /* footer  */
 #victory{
-    /* border: solid black thin; */
     color: black;
     font-family: 'Press Start 2P', cursive;
     font-size: 30px;
-    /* text-align: center; */
     width: 648px;
     padding-top: 5px;
     margin-top: 15px;
@@ -222,7 +247,7 @@ button:hover{
 .spin-5     { transform: rotateX(-3959deg); }
 .spin-6     { transform: rotateX(-4019deg); }
 
-  /* this is the annamation controls how it will spin. */
+  /* this is the animation controls how it will spin. */
 @keyframes spin-1 {
       0%    { transform: rotateX(30deg); }
       100%  { transform: rotateX(-3719deg); }
