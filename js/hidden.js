@@ -34,7 +34,7 @@ function passwordHandler(event){
   } else {
     hide ('hidden');
     show ('multipliers');
-    alert("Hey, stop messing with me! Or I'll call my fat ass body guard!!");
+    alert("Hey, stop messing with me!!! Or I'll crash your computer!!!");
   }
 }
 passEl.addEventListener('submit',passwordHandler);
