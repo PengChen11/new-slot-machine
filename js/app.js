@@ -26,34 +26,23 @@ new GameImage('bananas', 'assets/bananas.png', 5, 2);
 new GameImage('carrot', 'assets/carrot.png', 5, 2);
 new GameImage('lemon', 'assets/lemon.png', 5, 2);
 
-//function to update credit balance for a win
+//function to update credit balance
 function creditUpdate() {
-
-  //variable to access credit element in html and create a <p> tag
-  var getCredit = document.getElementById('status-dollar');
-  var getStatusBox = document.getElementById('status-winningRound');
-  var createParagraph = document.createElement('p');
-
-  //clear previous data and adds new content to P tag
-  getCredit.innerHTML = null;
-  getStatusBox.innerHTML = 'Get 3 of a kind to win a jackpot!';
+  //reset to defaullt text for this status bar
+  $('#status-winningRound p').text('Get 3 of a kind to win a jackpot!');
   //conditional logic to determine the balance of credits
   if (credits > 0 && credits < 1000) {
-    createParagraph.innerHTML = ' $' + credits;
-    //adds new message to paragraph and appends to document
-    getCredit.appendChild(createParagraph);
+    $('#status-dollar p').text(' $' + credits);
   } else if (credits >= 1000) {
-    createParagraph.innerHTML = ' $' + credits;
-    //adds new message to paragraph and appends to document
-    getCredit.appendChild(createParagraph);
+    $('#status-dollar p').text(' $' + credits);
     alert('You have won by reaching more than $1000!');
   } else {
     credits = 0;
-    createParagraph.innerHTML = ' $' + credits;
-    getCredit.appendChild(createParagraph);
+    $('#status-dollar p').text(' $' + credits);
     alert('You ran out of money!');
   }
 }
+
 //function update credit balance for a loss
 function creditUpdateLoss(wager) {
   var removeWager = wager * -1;
@@ -63,22 +52,17 @@ function creditUpdateLoss(wager) {
 
 //function updates status box
 function statusUpdate(status) {
-  //variables to access status box element in html
-  var getStatusBox = document.getElementById('status-winningRound');
-  var createParagraph = document.createElement('p');
-  getStatusBox.innerHTML = null;
-  //adds new message to the paragraph and appends to document
-  createParagraph.innerHTML = 'You have won $ ' + status + '!';
-  getStatusBox.appendChild(createParagraph);
+  var statusTxt = 'You have won $ ' + status + '!';
+  $('#status-winningRound p').text(statusTxt);
 }
 
 //function to calculate how much creadit you've earned/lost per spin
 function calculateEarnings(wager) {
 
   // since it has two class attr, we need to slice 5 to get the spin-#;
-  var img1 = document.getElementById('ring1').classList.value.slice(5);
-  var img2 = document.getElementById('ring2').classList.value.slice(5);
-  var img3 = document.getElementById('ring3').classList.value.slice(5);
+  var img1 = $('#ring1').attr('class').slice(5);
+  var img2 = $('#ring2').attr('class').slice(5);
+  var img3 = $('#ring3').attr('class').slice(5);
 
   // since we are checking the class tags, we will need to associate that with an image name in the imagePool
   // Takes above variables and passing them through getName function on spinner.js to get a string name value of the image.
@@ -180,10 +164,6 @@ function calculateEarnings(wager) {
     failTrackerMid++;
     failTrackerBig++;
   }
-  // console.log('small Fail ' + failTrackerSmall);
-  // console.log('mid Fail ' + failTrackerMid);
-  // console.log('big Fail ' + failTrackerBig);
-
 }
 
 //click handler for handling when a wager button is clicked
@@ -191,28 +171,22 @@ function clickHandler(event) {
   //start function is on spinner.js which starts the spinning of the reels
   start();
   // since start function will spin the wheels 3.5s, we set a delay timer for 3.6s so the result won't pop up before the wheel stops. At the mean time, we disable the buttons, so that people can't keep hitting the buttons to spin the machine.
-  var bet1El = document.getElementById('bet1');
-  var bet5El = document.getElementById('bet5');
-  var bet10El = document.getElementById('bet10');
-  bet1El.disabled = true;
-  bet5El.disabled = true;
-  bet10El.disabled = true;
+  // after the wheel starts to spin, we disable the 3 wager buttons.
+  $('#bet1').attr('disabled',true);
+  $('#bet5').attr('disabled',true);
+  $('#bet10').attr('disabled',true);
 
+  // after the wheels stops, we run the funnction to calculate win/loss credits based on the result. Also enable those wager buttons.
   var wager = event.target.value;
   setTimeout(function (){
     calculateEarnings(wager);
-    bet1El.disabled = false;
-    bet5El.disabled = false;
-    bet10El.disabled = false;
+    $('#bet1').attr('disabled',false);
+    $('#bet5').attr('disabled',false);
+    $('#bet10').attr('disabled',false);
   }, 3600);
 }
 
-var getWager1 = document.getElementById('bet1');
-var getWager5 = document.getElementById('bet5');
-var getWager10 = document.getElementById('bet10');
-
-//add listener to html elements for click handler
-//add these to the button wagers
-getWager1.addEventListener('click', clickHandler);
-getWager5.addEventListener('click', clickHandler);
-getWager10.addEventListener('click', clickHandler);
+//add listener to wager buttons for click handler
+$('#bet1').click(clickHandler);
+$('#bet5').click(clickHandler);
+$('#bet10').click(clickHandler);
