@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 </head>
 <body>
   <div id="status">
@@ -53,17 +54,17 @@
         <p>Give the player: </p>
         <label>
           5X win per:
-          <input type="text" name="small" size="5"></input>
+          <input id="small" type="text" name="small" size="5"></input>
           losing spins. 
         </label>
         <label>
           10X win per:
-          <input type="text" name="mid" size="5"></input>
+          <input id="mid" type="text" name="mid" size="5"></input>
           losing spins.
         </label>
         <label>
           15X win per:
-          <input type="text" name="big" size="5"></input>
+          <input id="big" type="text" name="big" size="5"></input>
           losing spins. 
         </label>
         <button id="cheatBut" type="submit">SUBMIT</button>

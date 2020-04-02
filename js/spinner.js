@@ -65,19 +65,32 @@ function createSlots (ring) {
 }
 
 //DOM 3 rings to the HTML page
-var ring1 = document.getElementById('ring1');
-createSlots(ring1);
-var ring2 = document.getElementById('ring2');
-createSlots(ring2);
-var ring3 = document.getElementById('ring3');
-createSlots(ring3);
+// var ring1 = document.getElementById('ring1');
+// createSlots(ring1);
+// var ring2 = document.getElementById('ring2');
+// createSlots(ring2);
+// var ring3 = document.getElementById('ring3');
+// createSlots(ring3);
+//jQuery version for above function
+$(document).ready(function(){
+  createSlots($('#ring1'));
+  createSlots($('#ring2'));
+  createSlots($('#ring3'));
+});
 
 // function to determine which random picture to show when the spin stops. When we have a pre-set to affect the win/lose ratio, then it will compaire the fail rounds vs win rounds, and then return the number based on conditions.
+var seedSmall = 0;
 function getSeed() {
   var seedReturn = Math.ceil(Math.random()*(SLOTS_PER_REEL));
-
+  console.log('fail tracker small',failTrackerSmall);
+  console.log('win set small', winSetSmall);
   if (failTrackerSmall === winSetSmall){
-    seedReturn = 2;
+    if (seedSmall !== 0){
+      seedReturn = seedSmall;
+    } else{
+      seedSmall = Math.ceil(Math.random()*(4));
+      seedReturn = seedSmall;
+    }
   }
   if(failTrackerMid === winSetMid){
     seedReturn = 5;
