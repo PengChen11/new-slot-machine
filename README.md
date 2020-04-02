@@ -1,5 +1,14 @@
-# slot-machine
-## 201 group project- Slot Machine
+# new-slot-machine
+This was our group project for Code Fellows 201 class. From now on I'll be keep working on it.     
+<p align="right"> --Mar 31 2020.</p>
+
+[Click here to visit the new deployed site. ](https://pengchen11.github.io/new-slot-machine/)
+
+[Link to old deployed page.](https://slot-machine-201.github.io/slot-machine/)
+
+
+# 201 group project- Slot Machine
+Refer to the following info for the old group project.
 ## Team members :
 - Kent Sheats 
 - Joseph Zabaleta 

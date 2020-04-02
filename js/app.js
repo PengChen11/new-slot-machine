@@ -8,9 +8,6 @@ var imagePool = [];
 //Starting credit amount for the game
 var credits = 100;
 // //creating variables to access wager buttons in html
-var getWager1 = document.getElementById('bet1');
-var getWager5 = document.getElementById('bet5');
-var getWager10 = document.getElementById('bet10');
 
 //construction function to create image objects
 function GameImage (name, imagePath, wagerMultiplier, matchOftwoMultiplier) {
@@ -105,7 +102,7 @@ function calculateEarnings(wager) {
         var winningResult = (imagePool[i].wagerMultiplier * wager);
         //add winningResults to global varaible credits and run creditUpdate
         credits += winningResult;
-        // this is to reset the fail tracher for different level of winning;
+        // this is to reset the fail tracher for different winning prizes;
         if (matchOfThree === 'gold'){
           failTrackerBig = 0;
           failTrackerMid = 0;
@@ -115,6 +112,7 @@ function calculateEarnings(wager) {
           failTrackerSmall = 0;
         } else {
           failTrackerSmall =0;
+          seedSmall = 0;
         }
         creditUpdate();
         statusUpdate(winningResult);
@@ -208,6 +206,10 @@ function clickHandler(event) {
     bet10El.disabled = false;
   }, 3600);
 }
+
+var getWager1 = document.getElementById('bet1');
+var getWager5 = document.getElementById('bet5');
+var getWager10 = document.getElementById('bet10');
 
 //add listener to html elements for click handler
 //add these to the button wagers
